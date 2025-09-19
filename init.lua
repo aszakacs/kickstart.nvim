@@ -681,7 +681,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        pylsp = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -697,6 +697,21 @@ require('lazy').setup({
           },
         },
       }
+      -- disable automatic formatting on save
+      vim.lsp.config('pylsp', {
+        settings = {
+          pylsp = {
+            plugins = {
+              autopep8 = {
+                enabled = false,
+              },
+              yapf = {
+                enabled = false,
+              },
+            },
+          },
+        },
+      })
 
       -- Ensure the servers and tools above are installed
       --
